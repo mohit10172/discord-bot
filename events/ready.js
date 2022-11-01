@@ -4,6 +4,6 @@ module.exports = {
 	name: Events.ClientReady,
 	once: true,
 	execute(client) {
-		console.log(`Ready! Logged in as ${client.user.tag}`);
+		console.log(`\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n\nReady! Logged in as ${client.user.tag}\n\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*`);
 	},
 };

@@ -1,6 +1,6 @@
-const fs = require('node:fs');
-const path = require('node:path');
+
 const { Client, GatewayIntentBits, Collection  } = require('discord.js');
+const { Player } = require('discord-player');
 const { token } = require('./config.json');
 const eventHandler = require('./handlers/eventHandler');
 
@@ -8,7 +8,19 @@ const eventHandler = require('./handlers/eventHandler');
 const client = new Client({ 
     intents: [
         GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildVoiceStates,
     ], 
+});
+
+const player = new Player(client, {
+    leaveOnEnd: true,
+    leaveOnStop: true,
+    leaveOnEmpty: true,
+    leaveOnEmptyCooldown: 60000,
+    autoSelfDeaf: true,
+    initialVolume: 100 
 });
 
 //Dynamically loading the commmands and events from 'commands' & 'events' folders respectively.
